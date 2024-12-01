@@ -9,7 +9,7 @@ const Navbar = () => {
   <li><Link to="/allBooks" className="text-blue-400 font-bold">Agent Deshbord</Link></li>
 
    <li><Link to="/login" className="text-blue-400 font-bold">LogIn</Link></li>
-  <li><Link to="/login" className="text-blue-400 font-bold">Sign UP</Link></li>
+  <li><Link to="/signUp" className="text-blue-400 font-bold">Sign UP</Link></li>
   </>
 
 

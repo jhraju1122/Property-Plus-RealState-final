@@ -10,7 +10,8 @@ import {
 import Home from './components/Home/Home.jsx';
 import ErrorPage from './components/Errorpage/ErrorPage.jsx';
 import Login from './components/Shares/Login/Login.jsx';
- 
+import SignUp from './components/Shares/SignUp/SignUp.jsx';
+  
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,9 +19,13 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
   },
   {
-    patha: "/login",
-    element: <Login></Login>,
-  } ,
+   path: "/login",
+   element: <Login></Login>,
+  },
+  {
+    path: "/signUp",
+    element: <SignUp></SignUp>,
+   }
   
 ]);
 createRoot(document.getElementById('root')).render(
