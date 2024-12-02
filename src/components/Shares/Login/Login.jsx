@@ -1,23 +1,26 @@
-// import React, { useContext, useState } from 'react';
- import { Link } from 'react-router-dom';
-// import { signInWithEmailAndPassword } from 'firebase/auth';
-// import { useNavigate } from "react-router-dom";
-// import { AuthContext } from '../providers/AuthProvider';
+  import { useState } from 'react';
+import { Link } from 'react-router-dom';
  
 
  
  
 const Login = () => {
 
+  const navItems = <>
+  <div className='signup-nav'>
+  <Link  to="/" className="text-blue-400 font-bold">Home</Link>
+   <Link  to="/AllProperties" className="text-blue-400 font-bold">All properties</Link>
+   <Link  to="/allBooks" className="text-blue-400 font-bold">Dashboard</Link>
+   <Link  to="/allBooks" className="text-blue-400 font-bold">Agent Deshbord</Link>
+   <Link  to="/login" className="text-blue-400 font-bold">LogIn</Link>
+   <Link  to="/signUp" className="text-blue-400 font-bold">Sign UP</Link>
+  </div>
+   </>
 
+ 
 
-  // const navigate = useNavigate();
-  
-  // const {logInUser} = useContext(AuthContext);
-  // const [user, setUser] = useState(null);
-  // const [registerError, setRegisterError] = useState('');
-  // const [success, setSuccess] = useState(''); 
-
+   const [registerError, setRegisterError] = useState('');
+   const [success, setSuccess] = useState('');
 
   const handleLogin = e =>{
     e.preventDefault();
@@ -27,13 +30,23 @@ const Login = () => {
     console.log(email, password, accepted);
 
 
-    // signInWithEmailAndPassword(auth, email, password)
-    // .then(result =>{
-    //   navigate("/");
-
-    // })
-    // .catch(error => console.error(error))
-
+       //  password at least 6 characters
+       if(password.length < 6){
+        setRegisterError('password should be at least 6 characters or longer');
+        return;
+      }
+      else if(!/[a-z]/.test(password)){
+        setRegisterError('your password should have at least one lowar case characters.')
+        return;
+      }
+      else if(!accepted){
+        setRegisterError('please accepted our terms and conditions!');
+        return;
+      }
+  
+        //  reset user 
+        setRegisterError('');
+        setSuccess('');
    }
 
 
@@ -42,7 +55,7 @@ const Login = () => {
     return (
       
       <div>
-        
+        {navItems}
         <div className="hero bg-base-200 min-h-screen">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
@@ -82,13 +95,13 @@ const Login = () => {
             </div>
               </div>
             </form>
-            {/* {
+            {
               registerError && <p className='text-red-700'>{registerError}</p>
             }
             {
               success && <p className='text-green-600'>{success}</p>
-            } */}
-            <p>You have not already an account? please <Link to="/register">
+            }
+            <p>You have not already an account? please <Link to="/signUp">
             <button type='submit' className="btn btn-link">Sign Up</button>
             </Link> </p>
 

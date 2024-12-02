@@ -68,16 +68,14 @@ const Navbar = () => {
       <ul
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-        <li>
-          <a className="justify-between">
+        <Link>
           My Profile
-          </a>
-        </li>
-        <li><a>Wishlist</a></li>
-        <li><a>Property bought</a></li>
+        </Link>
+        <Link>Wishlist </Link>
+         <Link>Property bought </Link>
         <Link to="/addProperties"><a>Add Properties</a></Link>
-        <li><a>My reviews</a></li>
-        <li><a>Logout</a></li>
+        <Link>My reviews </Link>
+        <Link to="/login">Login</Link>
       </ul>
     </div>
  
