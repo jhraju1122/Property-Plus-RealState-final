@@ -1,7 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const SignUp = () => {
+
+  const {createUser} =useContext(AuthContext);
+
+
+
     const navItems = <>
    <div className='signup-nav'>
    <Link  to="/" className="text-blue-400 font-bold">Home</Link>
@@ -19,11 +25,20 @@ const [success, setSuccess] = useState('');
 
 const handleSignUp = e =>{
     e.preventDefault()
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
     const accepted = e.target.terms.checked;
     console.log(email, password, accepted);
   
+    // createUser 
+    createUser(email, password)
+    .then(result =>{
+      console.log(result.user);
+    })
+    .catch(error =>{
+      console.error(error)
+    })
 
         //  password at least 6 characters
     if(password.length < 6){
